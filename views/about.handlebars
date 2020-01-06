@@ -26,14 +26,16 @@
       </div>
       <div class="modal-body">
         <p class="text-muted mb-3">Helpline: +268 7828 2051 or +268 79282051</p>
+        
+        <form action="/about" method="post" id="order-form">
+
         {{#each errors}}
-        <div class="alert alert-danger" >{{text}}
+        <div class="alert alert-danger error-feedback" >{{text}}
           {{!-- <button class="close ml-auto"><span>&times;</span></button> --}}
         </div>
         {{else}}
 
         {{/each}}
-        <form action="/about" method="post" id="o-form">
           <div class="form-group">
             <label for="name">Name</label>
             <input name="name" type="text" class="form-control" value="{{name}}">
@@ -80,69 +82,3 @@
       </div>
     </div>
   </div>
-
-  {{!-- 
-{{!-- Popup --}}
-  <div class="popup" id="popup">
-    <div class="order-box my-2">
-      <div class="order-scrollbar" id="style-1">
-        <div class="popup-header mt-3">
-          <h5>Order a T-Shirt</h5>
-          <a href="/about" class="close-popup"> &times; </a>
-          <p class="text-muted">Helpline: +268 78282051 or +268 7928 2051</p>
-        </div>
-        {{#each errors}}
-        <div class="alert alert-danger" style="margin-left: 10px; margin-right: 10px;">{{text}}
-          {{!-- <button class="close ml-auto"><span>&times;</span></button> --}}
-        </div>
-        {{else}}
-
-        {{/each}}
-        <form action="/about" method="post" name="o-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input name="name" type="text" class="form-control" value="{{name}}">
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input name="email" type="email" class="form-control" value="{{email}}">
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input name="phone" type="tel" class="form-control" value="{{phone}}">
-          </div>
-
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input name="address" type="text" class="form-control">
-            <small class="text-muted">
-              * Optional *
-            </small>
-          </div>
-
-          <div class="form-group">
-            <label for="color">Color</label>
-            <input name="color" type="text" class="form-control" value="{{color}}">
-            <small class="form-text text-muted">
-              * We have all colors available *
-            </small>
-          </div>
-
-          <div class="form-group">
-            <label for="color">Size</label>
-            <select name="size" class="custom-select mb-3" value="{{size}}">
-              <option selected>Choose your size</option>
-              <option value="small">Small</option>
-              <option value="medium">Med</option>
-            </select>
-          </div>
-          {{!-- <input type="submit" value="Submit" class="btn bg-custom btn-block text-white btn-lg mb-5"> --}}
-          <a href="#popup" onclick="document.getElementById('order-form').submit(); "
-            class="btn bg-custom btn-block text-white btn-lg mb-5">Submit</a>
-
-        </form>
-      </div>
-    </div>
-  </div> --}}
