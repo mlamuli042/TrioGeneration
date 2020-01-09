@@ -14,11 +14,10 @@ const { formatDate } = require('./helpers/dateFormat');
 const message = require('./routes/message');
 const order = require('./routes/order');
 
+
 //Load message model
 require('./models/Message');
 const Message = mongoose.model('messages');
-
-
 
 //Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
@@ -78,12 +77,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => {
- res.render('about');
-});
-
 //use routes
-app.use('/messages', message);
 app.use('/', message);
 app.use('/', order);
 
