@@ -21,6 +21,7 @@ body{
   width:450px;
   margin:auto; 
 }
+
 .brand{
   width:300px;
   margin:auto;
@@ -44,11 +45,14 @@ body{
   min-height: 400px;
 }
 
-.header{
+.header-h1{
   width: 90%;
   margin: auto;
 }
 
+#btn-custom{
+  border: 1px solid white;
+}
 .info-header{
   width: 50%;
   margin: auto;
@@ -91,9 +95,6 @@ body{
   background-color: #555;
 }
 
-.header-btn{
-  border-color: #fff;
-}
 
 .bg-custom{
   background: rgba(126, 213, 111);
@@ -176,9 +177,7 @@ body{
 
 
 .price-main{
-  font-size: 2rem;
-  font-weight: lighter;
-
+font-size: 20px;
 }
 .price-text{
   font-size: 20px;
