@@ -50,6 +50,7 @@ body{
   margin: auto;
 }
 
+
 #btn-custom{
   border: 1px solid white;
 }
@@ -59,6 +60,7 @@ body{
   margin-bottom: 1px #ddd solid;
   border-bottom: 1px #ddd solid;
 }
+
 
 #wrapper{
   margin: auto;
@@ -71,7 +73,7 @@ body{
 .scrollbar{
   margin-left: 10px;
   float: left;
-  height: 370px;
+  height: 430px;
   width: 100%;
   background: #fff;
   overflow: scroll;
@@ -109,7 +111,7 @@ body{
 
 .table_style{
   padding: 5px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif'; */
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -120,6 +122,7 @@ body{
   margin: auto;
   border: 1px solid #f1f1f1;
   perspective: 1000px;  /*Remove this if you don't want the 3D effect */
+  -moz-perspective: 1000px;
 }
 
 /* This container is needed to position the front and back side */
@@ -128,14 +131,14 @@ body{
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: all 0.8s ease;
   transform-style: preserve-3d;
   /* box-shadow: 0 1.5rem 4rem rgba(0,0,0,.2); */
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 /* Position the front and back side */
@@ -157,6 +160,7 @@ body{
   color: white;
   transform: rotateY(180deg);
 }
+
 
 .content{
   font-size: 17px;
@@ -180,7 +184,7 @@ body{
 font-size: 20px;
 }
 .price-text{
-  font-size: 20px;
+  font-size: 16px;
 }
 
 

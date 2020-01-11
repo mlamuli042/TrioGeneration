@@ -35,7 +35,7 @@
 <!-- Categories section -->
 <div class="row" id="categories">
   <div class="col-md-4">
-    <div class="flip-card mb-2">
+    <div class="flip-card mt-1 mb-2">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="/img/girl.png" alt="Girls" style="width:298px;height:300px;">
@@ -62,7 +62,7 @@
 
 
   <div class="col-md-4">
-    <div class="flip-card mb-2">
+    <div class="flip-card mt-1 mb-2">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="/img/guy.png" alt="Guys" style="width:298px;height:300px;">
@@ -88,7 +88,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class="flip-card">
+    <div class="flip-card mt-1">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="/img/girl.png" alt="Gays" style="width:298px;height:300px;">
@@ -99,13 +99,13 @@
             a non-judgemental soul because there is one and only one
             judge, God.</p>
         </div>
-        <div class="flip-card-back" style="background-image: linear-gradient(to right bottom, #80FF72, #7EE8FA);">
+        <div class="flip-card-back" style="background-image: linear-gradient(to right bottom, #7ed56f, #28b485);">
           <div class="price-box">
             <div class="price">
               <p class="price-text">Only</p>
               <p class="price-main">R300.00</p>
             </div>
-            <button class="btn btn-outline-secondary btn-lg text-white" data-toggle="modal" id="btn-custom"
+            <button class="btn btn-outline-secondary btn-lg text-white" id="btn-custom" data-toggle="modal"
               data-target="#orderModal" data-backdrop="static" data-keyboard="false">Order Now!</button>
           </div>
         </div>
@@ -124,10 +124,10 @@
         <div class="modal-body">
           <p class="text-muted mb-3">Helpline: +268 76771099 or +268 79861154</p>
 
-          <form action="/" method="post" id="order-form" name="order_form">
+          <form action="/" method="post" id="order-form">
 
             {{#each errors}}
-            <div class="alert alert-danger error-feedback">{{text}}
+            <div class="alert alert-danger feedback">{{text}}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                   aria-hidden="true">&times;</span></button>
             </div>
@@ -135,24 +135,44 @@
 
             {{/each}}
 
+            {{#if success_msg}}
+            <div class="alert alert-success feedback">
+              {{success_msg}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+            </div>
+            {{else}}
+
+            {{/if}}
+
+            {{#if error_msg}}
+            <div class="alert alert-danger feedback">
+              {{error_msg}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+            </div>
+            {{else}}
+
+            {{/if}}
+
             <div class="form-group">
               <label for="name">Name</label>
-              <input name="order_name" type="text" class="form-control" value="{{name}}">
+              <input name="orderName" type="text" class="form-control" id="name" value="{{name}}">
             </div>
 
             <div class="form-group">
-              <label for="order_email">Email</label>
-              <input name="email" type="email" class="form-control" value="{{email}}">
+              <label for="email">Email</label>
+              <input name="orderEmail" type="email" class="form-control" id="email" value="{{email}}">
             </div>
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input name="phone" type="tel" class="form-control" value="{{phone}}">
+              <input name="phone" type="tel" class="form-control" id="phone" value="{{phone}}">
             </div>
 
             <div class="form-group">
               <label for="address">Address</label>
-              <input name="address" type="text" class="form-control">
+              <input name="address" type="text" class="form-control" id="address">
               <small class="text-muted">
                 * Optional *
               </small>
@@ -160,7 +180,7 @@
 
             <div class="form-group">
               <label for="color">Color</label>
-              <input name="color" type="text" class="form-control" value="{{color}}">
+              <input name="color" type="text" class="form-control" id="color" value="{{color}}">
               <small class="form-text text-muted">
                 * We have all colors available *
               </small>
@@ -168,10 +188,13 @@
 
             <div class="form-group">
               <label for="color">Size</label>
-              <select name="size" class="custom-select mb-3" value="{{size}}">
+              <select name="size" class="custom-select mb-3" id="size" value="{{size}}">
                 <option selected>Choose your size</option>
-                <option value="small">Small</option>
-                <option value="medium">Med</option>
+                <option value="XSmall">XS</option>
+                <option value="Small">S</option>
+                <option value="Medium">M</option>
+                <option value="Large">L</option>
+                <option value="XLarge">XL</option>
               </select>
             </div>
             <input type="submit" value="Submit" class="btn bg-custom btn-block text-white btn-lg mb-5">
@@ -182,7 +205,9 @@
     </div>
   </div>
   {{!End of Modal --}}
+
 </div>
+
 <!-- About section -->
 <div class="row py-5" id="about">
   <div class="col">
@@ -255,10 +280,10 @@
 </div>
 
 <!-- Contact section -->
-<div class="row bg-light py-5" id="contact">
+<div class="row py-3" id="contact">
   <div class="col-lg-6 col-sm-12 order-sm-2 order-lg-1">
     {{#each errors}}
-    <div class="alert alert-danger">
+    <div class="alert alert-danger comment-feedback">
       {{text}}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
           aria-hidden="true">&times;</span></button>
@@ -288,7 +313,7 @@
     {{/if}}
     <h3 class="h4">Get in touch</h3>
     <p>Your email address will not be published</p>
-    <form action="/" method="post" id="comment-form">
+    <form action="/" method="post">
       <div class="form-group">
         <div class="input-group ">
           <span class="input-group-text">
@@ -321,11 +346,16 @@
   </div>
 
   <div class="col-lg-6 col-sm-12 order-sm-1 order-lg-2">
-    <h5>Latest Comments</h5>
+
+    {{#if messages}}
+    <p>Latest Comments</p>
+    {{else}}
+
+    {{/if}}
+
     <div id="wrapper">
       <div class="scrollbar" id="style-1">
         <div class="force-overflow">
-          <hr>
           {{#each messages}}
           <table class="stripped">
             <thead>

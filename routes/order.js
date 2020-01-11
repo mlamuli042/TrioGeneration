@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('../models/Order');
 const Order = mongoose.model('order');
   
-  router.post('/', (req, res) => {
+router.post('/', (req, res) => {
   let errors = [];
 
   if (!req.body.order_name) {
@@ -33,8 +33,8 @@ const Order = mongoose.model('order');
     });
   } else {
     const newOrder = {
-      name: req.body.name,
-      email: req.body.email,
+      name: req.body.order_name,
+      email: req.body.order_email,
       phone: req.body.phone,
       address: req.body.address,
       color: req.body.color,
