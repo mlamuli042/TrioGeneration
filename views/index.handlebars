@@ -1,15 +1,16 @@
+<!-- Home section -->
 <div class="main-header">
   <div id="home" class="row py-5">
     <div class="col-md-6 text-center text-white">
       <h1 class="display-3 mt-3 header-h1">
         Freedom plus equal rights to all
       </h1>
-      <p class="lead">
+      <p class="lead py-4">
         Discrimination shall be a word in dictionary only!!
         The fact that we all humans, we must be treated fairly..
       </p>
       <a href="#about" class="btn btn-outline-secondary btn-lg text-white" id="btn-custom"><i
-          class="fa fa-arrow-right"></i>Read
+          class="fa fa-arrow-right"></i> Read
         More</a>
     </div>
     <div class="col-md-6">
@@ -26,8 +27,9 @@
         Get yourself a T-Shirt
       </h3>
       <p class="lead text-muted pb-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, porro?
+        New look, new brand, new you. Find it all with our locally designed brand.
       </p>
+      <small class="text-danger">Click or hover above these images below to make your first order.</small>
     </div>
   </div>
 </div>
@@ -38,13 +40,18 @@
     <div class="flip-card mt-1 mb-2">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="/img/girl.png" alt="Girls" style="width:298px;height:300px;">
-          <h4 class="mt-3 text-danger">Girls</h4>
-          <p class="content" style="width: 80%; margin: auto;">
-            Girls and you guys, please focus on who you are. We must be
-            all proud of ourselves. Let us continue to live a life of
-            a non-judgemental soul because there is one and only one
-            judge, God.</p>
+          <div class="card-img">
+            <img src="/img/girl.png" alt="Girls" style="width:298px;height:300px;">
+          </div>
+          <div class="card-details">
+            <ul class="details">
+              <li class="detail-list">Ladies beautiful design</li>
+              <li class="detail-list">All colors</li>
+              <li class="detail-list">Short + long sleeves</li>
+              <li class="detail-list">Round and V-necks</li>
+              <li class="detail-list">High quality</li>
+            </ul>
+          </div>
         </div>
         <div class="flip-card-back" style="background-image: linear-gradient(to right bottom, #ff512f, #dd2476);">
           <div class="price-box">
@@ -65,13 +72,18 @@
     <div class="flip-card mt-1 mb-2">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="/img/guy.png" alt="Guys" style="width:298px;height:300px;">
-          <h4 class="mt-3 text-primary">Guys</h4>
-          <p class="content" style="width: 80%; margin: auto;">
-            Guys, please focus on who you are. We must be
-            all proud of ourselves. Let us continue to live a life of
-            a non-judgemental soul because there is one and only one
-            judge, God.</p>
+          <div class="card-img">
+            <img src="/img/guy.png" alt="Guys" style="width:298px;height:300px;">
+          </div>
+          <div class="card-details">
+            <ul class="details">
+              <li class="detail-list">Men's handsome design</li>
+              <li class="detail-list">All colors</li>
+              <li class="detail-list">Short + long sleeves</li>
+              <li class="detail-list">Round and V-necks</li>
+              <li class="detail-list">High quality</li>
+            </ul>
+          </div>
         </div>
         <div class="flip-card-back" style="background-image: linear-gradient(to right bottom, #00b4db, #0083b0);">
           <div class="price-box">
@@ -91,13 +103,18 @@
     <div class="flip-card mt-1">
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="/img/girl.png" alt="Gays" style="width:298px;height:300px;">
-          <h4 class="mt-3" style="color: rgba(126, 213, 111);">Gays</h4>
-          <p class="content" style="width: 80%; margin: auto;">
-            Guys, please focus on who you are. We must be
-            all proud of ourselves. Let us continue to live a life of
-            a non-judgemental soul because there is one and only one
-            judge, God.</p>
+          <div class="card-img">
+            <img src="/img/girl.png" alt="Gays" style="width:298px;height:300px;">
+          </div>
+          <div class="card-details">
+            <ul class="details">
+              <li class="detail-list">LGBTIQ</li>
+              <li class="detail-list">All colors</li>
+              <li class="detail-list">Short + long sleeves</li>
+              <li class="detail-list">Round and V-necks</li>
+              <li class="detail-list">High quality</li>
+            </ul>
+          </div>
         </div>
         <div class="flip-card-back" style="background-image: linear-gradient(to right bottom, #7ed56f, #28b485);">
           <div class="price-box">
@@ -205,7 +222,6 @@
     </div>
   </div>
   {{!End of Modal --}}
-
 </div>
 
 <!-- About section -->
@@ -213,8 +229,13 @@
   <div class="col">
     <div class="info-header text-center mb-5">
       <h3 class="text-danger">Why this T-shirt?</h3>
-      <p class="lead pb-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique ipsum ad libero corrupti error architecto.
+      <p class="content pb-3">
+        Trio-Generation brings unity to people with different pespectives and choices. Straight individuals should make
+        those who ain't straight, comfortable with what they are. Good people let us all be proud and live a
+        non-judgemental life.
+      </p>
+      <p class="content pb-3">
+        Be proud to present this caring love triangle in your own style.
       </p>
     </div>
     <div id="accordion">
@@ -279,114 +300,8 @@
   </div>
 </div>
 
-<!-- Contact section -->
-<div class="row py-3" id="contact">
-  <div class="col-lg-6 col-sm-12 order-sm-2 order-lg-1">
-    {{#each errors}}
-    <div class="alert alert-danger comment-feedback">
-      {{text}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-    </div>
-    {{else}}
-
-    {{/each}}
-
-    {{#if success_msg}}
-    <div class="alert alert-success">
-      {{success_msg}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-    </div>
-    {{else}}
-
-    {{/if}}
-
-    {{#if error_msg}}
-    <div class="alert alert-danger">
-      {{error_msg}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-    </div>
-    {{else}}
-
-    {{/if}}
-    <h3 class="h4">Get in touch</h3>
-    <p>Your email address will not be published</p>
-    <form action="/" method="post">
-      <div class="form-group">
-        <div class="input-group ">
-          <span class="input-group-text">
-            <i class="fa fa-user"></i>
-          </span>
-          <input type="text" name="name" class="form-control" value="{{name}}" placeholder="Name" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group ">
-          <span class="input-group-text">
-            <i class="fa fa-envelope"></i>
-          </span>
-          <input type="email" name="email" class="form-control" value="{{email}}" placeholder="Email" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="input-group ">
-          <span class="input-group-text">
-            <i class="fa fa-pencil"></i>
-          </span>
-          <textarea name="message" class="form-control" placeholder="Message" rows="3" required>{{message}}</textarea>
-        </div>
-      </div>
-
-      <input type="submit" value="Submit" class="btn bg-custom btn-block text-white mb-5">
-    </form>
-  </div>
-
-  <div class="col-lg-6 col-sm-12 order-sm-1 order-lg-2">
-
-    {{#if messages}}
-    <p>Latest Comments</p>
-    {{else}}
-
-    {{/if}}
-
-    <div id="wrapper">
-      <div class="scrollbar" id="style-1">
-        <div class="force-overflow">
-          {{#each messages}}
-          <table class="stripped">
-            <thead>
-              <tr>
-                <th scope="row"></th>
-                <td width="70">
-                  <i class="fa fa-user fa-3x text-secondary"
-                    style="width: 50px; margin-left:10px; margin-top: 10px;"></i>
-                </td>
-                <td class="text-primary"><strong>{{name}}</strong></td>
-                <td class="text-muted" style="padding-left: 10px;">
-                  {{formatDate date 'MMMM Do YYYY'}}
-                </td>
-              </tr>
-            </thead>
-          </table>
-          <p style="margin-left: 75px; width:80%">{{details}}</p>
-          <hr>
-          {{else}}
-          <center>
-            <img src="/img/trio-generation.png" alt="Trio Generation - Logo" class="logo">
-          </center>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Footer -->
-<footer id="main-footer" class="py-5 text-white" style="background-color: rgba(126, 213, 111);">
+<footer id="main-footer" class="py-5 text-white">
   <div class="container">
     <div class="row text-center">
       <div class="col">
@@ -399,13 +314,13 @@
             </a>
           </div>
           <div class="p-4">
-            <a href="https://twitter.com" target="_blank">
-              <i class="fa fa-twitter fa-lg text-white"></i>
+            <a href="https://instagram.com" target="_blank">
+              <i class="fa fa-instagram fa-lg text-white"></i>
             </a>
           </div>
           <div class="p-4">
-            <a href="https://instagram.com" target="_blank">
-              <i class="fa fa-instagram fa-lg text-white"></i>
+            <a href="https://twitter.com" target="_blank">
+              <i class="fa fa-twitter fa-lg text-white"></i>
             </a>
           </div>
         </div>

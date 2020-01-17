@@ -2,15 +2,17 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
+//Bring order model
 require('../models/Order');
 const Order = mongoose.model('order');
-  
+ 
+//make order route
 router.post('/', (req, res) => {
   let errors = [];
 
-  if (!req.body.order_name) {
+  if (!req.body.orderName) {
     errors.push({ text: 'Enter your name' });
-  } if (!req.body.order_email) {
+  } if (!req.body.orderEmail) {
     errors.push({ text: 'Enter your email address' });
   } if (!req.body.phone) {
     errors.push({ text: 'Enter your phone number' });
@@ -25,29 +27,28 @@ router.post('/', (req, res) => {
   } if (errors.length > 0) {
     res.render('index', {
       errors: errors,
-      name: req.body.order_name,
-      email: req.body.order_email,
+      name: req.body.orderName,
+      email: req.body.orderEmail,
       phone: req.body.phone,
       color: req.body.color,
       size: req.body.size
     });
   } else {
     const newOrder = {
-      name: req.body.order_name,
-      email: req.body.order_email,
+      name: req.body.orderName,
+      email: req.body.orderEmail,
       phone: req.body.phone,
       address: req.body.address,
       color: req.body.color,
       size: req.body.size
     }
 
-    // new Order(newOrder)
-    //   .save()
-    //   .then(order => {
-
-    //   })
-    //console.log(req.body);
-
+    new Order(newOrder)
+      .save()
+      .then(order => {
+        req.flash('success_msg', 'Order is successfully made. We will contact you soon.');
+        res.redirect('/');
+      });
   }
 });
 

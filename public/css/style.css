@@ -1,5 +1,5 @@
 *{
-  border-radius: 0 !important;
+  border-radius: 3px !important;
 }
 
 body{
@@ -54,6 +54,7 @@ body{
 #btn-custom{
   border: 1px solid white;
 }
+
 .info-header{
   width: 50%;
   margin: auto;
@@ -133,7 +134,7 @@ body{
   text-align: center;
   transition: all 0.8s ease;
   transform-style: preserve-3d;
-  /* box-shadow: 0 1.5rem 4rem rgba(0,0,0,.2); */
+  box-shadow: 0 1.5rem 1.5rem rgba(0,0,0,.15);
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -152,7 +153,6 @@ body{
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #fff;
-  /* color: black; */
 }
 
 /* Style the back side */
@@ -162,6 +162,23 @@ body{
 }
 
 
+.card-details{
+  padding: 20px;
+}
+
+ul.details{
+  list-style: none;
+  width: 90%;
+}
+
+li.detail-list{
+  text-align: center;
+  margin: 15px 5px;
+}
+
+li.detail-list:not(:last-child){
+  border-bottom: 1px solid #eee;
+}
 .content{
   font-size: 17px;
 }
@@ -187,6 +204,9 @@ font-size: 20px;
   font-size: 16px;
 }
 
+#main-footer{
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
+}
 
 /* 
 @keyframes moveInLeft{
@@ -194,31 +214,24 @@ font-size: 20px;
     opacity: 0;
     transform: translateX(-100px);
   }
-
   80%{
     transform: translateX(10px);
   }
-
   100%{
     opacity: 1;
     transform: translate(0);
   }
 }
-
 @keyframes moveInRight{
   0%{
     opacity: 0;
     transform: translateX(100px);
   }
-
   80%{
     transform: translateX(-10px);
   }
-
   100%{
     opacity: 1;
     transform: translate(0);
   }
 } */
-
- 
