@@ -62,6 +62,7 @@ app.use(function (req, res, next) {
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'css')));
 app.use('/fa', express.static(__dirname + '/node_modules/font-awesome/css'));
 app.use('/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts'));
 
