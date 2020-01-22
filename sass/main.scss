@@ -7,7 +7,7 @@ $color-white: #fff;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 *{
-  border-radius: 3px !important;
+  border-radius: 5px !important;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', 'sans-serif';
 }
 
@@ -18,9 +18,9 @@ body{
   line-height: 1.7;
 }
 
+
 .custom-display{
   font-size: 60px;
-  font-weight: 100;
   line-height: 1.7;
 }
 
@@ -64,6 +64,22 @@ body{
   border-bottom: 1px #ddd solid;
 }
 
+.hint:link, .hint:visited{
+  font-size: 16px;;
+  text-decoration: none;
+  color: #f00;
+  transition: all .2s;
+}
+
+.hint:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px $color-black;
+  animation: moveUp 2s;
+}
+
+.hint:active{
+  transform: translateY(-1px);
+}
 
 #wrapper{
   margin: auto;
@@ -136,7 +152,7 @@ body{
   text-align: center;
   transition: all 0.8s ease;
   transform-style: preserve-3d;
-  box-shadow: 0 1.5rem 1.5rem $color-black;
+  box-shadow: 0 10px 20px $color-black;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -209,7 +225,6 @@ font-size: 20px;
 #main-footer{
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
 }
-
 
 /* 
 @keyframes moveInLeft{

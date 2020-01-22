@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
 const sendMail = require('./mail');
+const db = require('./config/database');
 const app = express();
 
 //handlebars helpers
@@ -17,7 +18,7 @@ const order = require('./routes/order');
 //Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
 //connecting to mongodb
-mongoose.connect('mongodb://localhost/triogeneration-dev', {
+mongoose.connect(db.mongoURI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 })
@@ -62,7 +63,6 @@ app.use(function (req, res, next) {
 
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'css')));
 app.use('/fa', express.static(__dirname + '/node_modules/font-awesome/css'));
 app.use('/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts'));
 
@@ -76,20 +76,19 @@ app.post('/email', (req, res) => {
   //send mail here
   const { email, subject, text } = req.body;
   console.log('Data: ', req.body);
-  sendMail(email, subject, text, function (err, data) {
-    if (err) {
-      res.status.json({ mesage: 'Internal error' });
+  sendMail(email, subject, text, (err, data) => {
+    if(err){
+      res.status(500).json({ message: 'Internal error' });
     } else {
       res.json({ message: 'Email sent!!' });
     }
   });
-
 });
 
 //user route
 app.use('/', order);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);

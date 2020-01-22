@@ -18,7 +18,7 @@ const sendMail =  (email, subject, text, cb) => {
     text: text
   };
   
-  transporter.sendMail(mailOption, function(err, data){
+  transporter.sendMail(mailOption, (err, data) => {
     if(err) {
      cb(err, null);
     } else {
