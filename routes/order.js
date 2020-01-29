@@ -1,11 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const { ensureAuthenticated } = require('../helpers/hbs');
 
 //Bring order model
 require('../models/Order');
 const Order = mongoose.model('order');
- 
+
+//get all orders route
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+  Order.find({})
+  .sort({date: 'desc'})
+  .then(orders => {
+    res.render('orders/dashboard', {
+      orders: orders
+    });
+  });
+});
+
 //make order route
 router.post('/', (req, res) => {
   let errors = [];

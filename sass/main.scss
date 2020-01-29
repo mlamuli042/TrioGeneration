@@ -1,8 +1,9 @@
+
 $color-light-grey: #f5f5f5;
 $color-green-primary: #7ed56f;
 $color-black: #00000026;
 $color-white: #fff;
-
+$blue: $color-green-primary;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -17,7 +18,6 @@ body{
   font-weight: 400;
   line-height: 1.7;
 }
-
 
 .logo{
   width:450px;
@@ -51,9 +51,19 @@ body{
 #btn-custom{
   border: 1px solid $color-white;
 }
+.delete-form{
+  display: inline-block;
+}
 
 .info-header{
   width:80%;
+  margin: auto;
+  margin-bottom: 1px #ddd solid;
+  border-bottom: 1px #ddd solid;
+}
+
+.profile-img{
+  text-align: center;
   margin: auto;
   margin-bottom: 1px #ddd solid;
   border-bottom: 1px #ddd solid;
@@ -114,6 +124,7 @@ body{
 
 .bg-custom{
   background: $color-green-primary;
+  color: $color-white;
 }
 
 

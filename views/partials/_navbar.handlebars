@@ -20,6 +20,18 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+          {{#if user}}
+          <li class="nav-item dropdown mr-3">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+              id="navbarDropdownMenuLink"><i class="fa fa-user-circle"></i> {{user.name}}</a>
+            <div class="dropdown-menu">
+              <a href="/users/profile" class="dropdown-item"><i class="fa fa-user-circle"></i> Profile</a>
+            </div>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/users/logout"><i class="fa fa-user-times"></i> Logout</a>
+            </li>
+          {{else}}
           <li class="nav-item">
             <a class="nav-link" href="#home">Home</a>
           </li>
@@ -31,6 +43,8 @@
           <li class="nav-item">
             <a class="nav-link" href="#about">About</a>
           </li>
+          {{/if}}
+
 
         </ul>
       </div>

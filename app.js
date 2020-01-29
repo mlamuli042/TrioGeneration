@@ -2,18 +2,24 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const path = require('path');
 const sendMail = require('./mail');
 const db = require('./config/database');
+const passport = require('passport');
 const app = express();
 
 //handlebars helpers
-const { formatDate } = require('./helpers/dateFormat');
+const { formatDate, countOrder } = require('./helpers/hbs');
 
 //Load order route
 const order = require('./routes/order');
+const user = require('./routes/users');
+
+//Passport config
+require('./config/passport')(passport);
 
 //Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
@@ -27,7 +33,10 @@ mongoose.connect(db.mongoURI, {
 
 //express-handlebars middleware
 app.engine('handlebars', exphbs({
-  helpers: { formatDate: formatDate },
+  helpers: { 
+    formatDate: formatDate,
+    countOrder: countOrder
+  },
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
@@ -42,12 +51,19 @@ app.use(bodyParser.urlencoded({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+//Method override middleware
+app.use(methodOverride('_method'));
+
 //Express session middleware
 app.use(session({
   secret: 'secret',
   resave: true,
   saveUninitialized: true
 }));
+
+//Passport middleware, always put it under the express session middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //connect flash middleware
 app.use(flash());
@@ -57,6 +73,7 @@ app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
   next();
 });
 
@@ -86,7 +103,9 @@ app.post('/email', (req, res) => {
 });
 
 //user route
+app.use('/orders', order);
 app.use('/', order);
+app.use('/users', user);
 
 const port = process.env.PORT || 5000;
 
