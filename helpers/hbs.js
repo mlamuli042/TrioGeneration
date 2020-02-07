@@ -30,13 +30,6 @@ module.exports = {
       }
       return next();
     });
-  },
-  countOrder: function (numOfOrders) {
-    Order.countDocuments({}, (err, count) => {
-      numOfOrders = count;
-    });
-
-    return numOfOrders;
   }
 }
 

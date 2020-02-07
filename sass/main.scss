@@ -1,9 +1,10 @@
 
 $color-light-grey: #f5f5f5;
 $color-green-primary: #7ed56f;
+$color-blue-primary:#00b4db;
 $color-black: #00000026;
 $color-white: #fff;
-$blue: $color-green-primary;
+
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -13,7 +14,7 @@ $blue: $color-green-primary;
 }
 
 body{
-  padding-top: 105px;
+  padding-top: 100px;
   font-size: 17px;
   font-weight: 400;
   line-height: 1.7;
@@ -47,7 +48,6 @@ body{
   min-height: 400px;
 }
 
-
 #btn-custom{
   border: 1px solid $color-white;
 }
@@ -65,6 +65,7 @@ body{
 .profile-img{
   text-align: center;
   margin: auto;
+  color: $color-blue-primary;
   margin-bottom: 1px #ddd solid;
   border-bottom: 1px #ddd solid;
 }
@@ -121,12 +122,10 @@ body{
   background-color: #555;
 }
 
-
 .bg-custom{
   background: $color-green-primary;
   color: $color-white;
 }
-
 
 .scroll{
   height:350px;
@@ -178,7 +177,6 @@ body{
   transform: rotateY(180deg);
 }
 
-
 .card-details{
   padding: 20px;
 }
@@ -210,19 +208,20 @@ li.detail-list:not(:last-child){
   backface-visibility: hidden;
 }
 
+.price-text{
+  font-size: 16px;
+  animation: moveInLeft 2s ease-in;
+}
 
 .price-main{
 font-size: 20px;
-}
-.price-text{
-  font-size: 16px;
+animation: moveInRight 2s ease-in;
 }
 
 #main-footer{
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485);
 }
 
-/* 
 @keyframes moveInLeft{
   0%{
     opacity: 0;
@@ -248,4 +247,4 @@ font-size: 20px;
     opacity: 1;
     transform: translate(0);
   }
-} */
+} 

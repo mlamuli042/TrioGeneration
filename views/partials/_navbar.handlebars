@@ -3,17 +3,17 @@
     <div class="container">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span> <i class="fa fa-bars fa-lg"> </i> </span>
       </button>
       <a href="/" class="navbar-brand">
         <table class="table_style striped mb-2">
           <thead>
             <tr>
               <th scope="row" class="d-inline align-middle"></th>
-              <td class="text-primary" style="font-size: 1.5rem;">TRIO</td>
-              <td style="font-size: 1.5rem">-</td>
-              <td class="text-success" style="font-size: 1.5rem;">GENER</td>
-              <td class="text-danger" style="font-size: 1.5rem;">ATION</td>
+              <td class="text-primary" style="font-size: 1.3rem;">TRIO</td>
+              <td style="font-size: 1.3rem">-</td>
+              <td class="text-success" style="font-size: 1.3rem;">GENER</td>
+              <td class="text-danger" style="font-size: 1.3rem;">ATION</td>
             </tr>
           </thead>
         </table>
@@ -22,15 +22,15 @@
         <ul class="navbar-nav ml-auto">
           {{#if user}}
           <li class="nav-item dropdown mr-3">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-              id="navbarDropdownMenuLink"><i class="fa fa-user-circle"></i> {{user.name}}</a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink"><i
+                class="fa fa-user-circle"></i> {{user.name}}</a>
             <div class="dropdown-menu">
               <a href="/users/profile" class="dropdown-item"><i class="fa fa-user-circle"></i> Profile</a>
             </div>
           </li>
-            <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="/users/logout"><i class="fa fa-user-times"></i> Logout</a>
-            </li>
+          </li>
           {{else}}
           <li class="nav-item">
             <a class="nav-link" href="#home">Home</a>

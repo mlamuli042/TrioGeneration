@@ -5,11 +5,10 @@ $(function () {
     $form = $(this);
 
     $.post(document.location.url, $(this).serialize(), function (data) {
-      $feedback = $("<div>").html(data).find(".feedback");
+      $feedback = $("<div>").html(data).find(".feedback").hide();
 
-      $form.prepend($feedback);
-      $feedback.fadeIn();
-      /* $form.prepend($feedback)[0].reset(); */
+      $form.prepend($feedback)[0].reset();
+      $feedback.fadeIn(1200);
     });
 
      //get form values
@@ -37,7 +36,4 @@ $(function () {
 
   });
 });
-
-
-
 

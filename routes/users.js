@@ -17,7 +17,7 @@ router.get('/login', (req, res) => {
 //Login form POST
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/orders',
     failureRedirect: '/users/login',
     failureFlash: true
   })(req, res, next);
@@ -27,7 +27,7 @@ router.get('/register', allowUserReg, (req, res) => {
   res.render('users/register');
 });
 
-//User regidtration
+//User registration
 router.post('/register', (req, res) => {
   let errors = [];
 
@@ -86,8 +86,8 @@ router.get('/profile', ensureAuthenticated, (req, res) => {
   res.render('users/profile');
 });
 
-router.put('/profile', (req, res) => {
-
+//Change password route
+router.put('/profile', ensureAuthenticated, (req, res) => {
   let errors = [];
 
   if (!req.body.newPassword) {
@@ -101,7 +101,7 @@ router.put('/profile', (req, res) => {
       errors: errors
     });
   } else {
-    User.findOne({_id: req.user.id})
+    User.findOne({ _id: req.user.id })
       .then(user => {
         user.password = req.body.newPassword;
 
@@ -113,7 +113,7 @@ router.put('/profile', (req, res) => {
             //Save new hashed password to database
             user.save()
               .then(user => {
-                req.flash('success_msg', 'New password is now set, use your new passowrd on your next login');
+                req.flash('success_msg', 'New password is set, use your new passowrd on your next login');
                 res.redirect('/users/profile');
               });
           });
@@ -124,9 +124,9 @@ router.put('/profile', (req, res) => {
 
 //remove account route
 router.delete('/profile', (req, res) => {
-  User.remove({_id: req.user.id})
-    .then( () => {
-      req.flash('success_msg', 'Account deleted');
+  User.deleteOne({ _id: req.user.id })
+    .then(() => {
+      req.flash('success_msg', 'Account removed');
       res.redirect('/users/login');
     });
 });

@@ -7,15 +7,15 @@ const { ensureAuthenticated } = require('../helpers/hbs');
 require('../models/Order');
 const Order = mongoose.model('order');
 
-//get all orders route
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
+// get all orders route
+router.get('/', ensureAuthenticated, (req, res) => {
   Order.find({})
-  .sort({date: 'desc'})
-  .then(orders => {
-    res.render('orders/dashboard', {
-      orders: orders
-    });
-  });
+    .sort({date: 'desc'})
+    .then(orders => {
+      res.render('orders/index', {
+        orders: orders
+      });
+    }); 
 });
 
 //make order route
@@ -64,4 +64,12 @@ router.post('/', (req, res) => {
   }
 });
 
+//Delete order route
+router.delete('/:id', ensureAuthenticated, (req, res) => {
+  Order.deleteOne({_id: req.params.id})
+    .then(() => {
+      req.flash('success_msg', 'Order removed');
+      res.redirect('/orders');
+    });
+});
 module.exports = router;

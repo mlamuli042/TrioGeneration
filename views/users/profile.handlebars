@@ -1,22 +1,16 @@
-<div class="row text-center text-white py-4" style="background-color: #00b4db;">
-  <h3 class="mx-auto"><i class="fa fa-user-circle"></i> Edit Profile</h3>
+<div class="row text-center text-white py-2" style="background-color: #00b4db;">
+  <h4 class="mx-auto"><i class="fa fa-user-circle"></i> Edit Profile</h4>
 </div>
 
 <div class="row bg-light">
-  <div class="col-md-6 mr-auto my-3">
-    <a href="/orders/dashboard" class="btn btn-light "><i class="fa fa-arrow-left"> Back to dashboard</i></a>
-  </div>
-  <div class="col-md-3 my-3">
-    <button class="btn bg-custom btn-block" data-toggle="modal" data-target="#changePasswordModal"
-      data-backdrop="static" data-keyboard="false">
-      <i class="fa fa-lock"></i> Change Password</button>
-  </div>
-
-  <div class="col-md-3 my-3">
-    <button type="submit" class="btn btn-block btn-danger" data-toggle="modal" data-target="#deleteAccountModal"
+  <div class="col my-3">
+    <a href="/orders" class="btn btn-light "><i class="fa fa-arrow-circle-left"> Back </i></a>
+    <button type="submit" class="btn btn-danger float-right" data-toggle="modal" data-target="#deleteAccountModal"
       data-backdrop="static" data-keyboard="false">
       <i class="fa fa-remove"></i> Delete Account</button>
   </div>
+
+
 
   {{!-- Delete account modal --}}
   <div class="modal fade" id="deleteAccountModal">
@@ -29,7 +23,7 @@
         <div class="modal-body">
           <p class="lead">Are you sure you want to <span class="text-danger">delete </span>account?</p>
           <div class="modal-footer">
-            <button class="btn bg-custom ml-auto" data-dismiss="modal">
+            <button class="btn bg-custom" data-dismiss="modal">
               <i class="fa fa-arrow-left"></i> Cancel</button>
             <form class="delete-form" action="/users/profile?_method=DELETE" method="post">
               <input type="hidden" name="_method" value="DELETE">
@@ -42,11 +36,30 @@
   </div>
 </div>
 
-<div class="row py-3">
+{{!-- Profile --}}
+<div class="row py-2">
   <div class="col-md-6 mx-auto">
+    {{!-- Check for errors --}}
+    {{#if errors}}
+    {{#each errors}}
+    <div class="alert alert-danger">{{text}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+    </div>
+    {{/each}}
+    {{else}}
+    {{!-- Check for success messages --}}
+    {{#if success_msg}}
+    <div class="alert alert-success">
+      {{success_msg}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+    </div>
+    {{/if}}
+    {{/if}}
     <div class="card">
       <div class="card-header text-center">
-        <h3 class="">My Profile</h3>
+        <h5 class="">My Profile</h5>
       </div>
       <div class="card-body">
         <div class="profile-img">
@@ -64,61 +77,52 @@
 
             <div class="col">
               <div class="form-group">
-                <label for="email" class="align-text-left">Email</label>
+                <label for="email">Email</label>
                 <input type="email" class="form-control" value="{{user.email}}" disabled>
               </div>
             </div>
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-
-  {{!-- Change password modal --}}
-  <div class="modal fade" id="changePasswordModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header bg-custom">
-          <h5 class="modal-title">Change Password</h5>
-          <button class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
-        <div class="modal-body">
-
-          {{!-- Check for errors --}}
-          {{#each errors}}
-          <div class="alert alert-danger form-feedback">{{text}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
-          </div>
-          {{else}}
-
-          {{/each}}
-
-          {{!-- Check for success messages --}}
-          {{#if success_msg}}
-          <div class="alert alert-success form-feedback">
-            {{success_msg}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
-          </div>
-          {{else}}
-
-          {{/if}}
-
-          <form id="changePassword" action="/users/profile?_method=PUT" method="POST">
-            <input type="hidden" name="_method" value="PUT">
-            <div class="form-group">
-              <label for="newPassword">New Password</label>
-              <input type="password" name="newPassword" class="form-control">
+        {{!-- change password accordion --}}
+        <div id="accordion">
+          <div class="card ">
+            <div class="card-header text-center text-white" style="background-color: #7ed56f;" id="headingOne">
+              <h5 class="mb-0">
+                <div data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="fa fa-arrow-circle-down"></i> Change Password
+                </div>
+              </h5>
             </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
 
-            <div class="form-group">
-              <label for="confirmNewPassword">Confirm New Password</label>
-              <input type="password" name="confirmNewPassword" class="form-control">
+                <form action="/users/profile?_method=PUT" method="post">
+                  <input type="hidden" name="_method" value="PUT">
+                  <div class="form-row">
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="newPassword">New Password</label>
+                        <input type="password" name="newPassword" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password</label>
+                        <input type="password" name="confirmNewPassword" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col">
+                      <button type="submit" class="btn bg-custom btn-block">
+                        <i class="fa fa-lock"></i> Update Password
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-
-            <input type="submit" class="btn bg-custom btn-block" value="Update Password">
-          </form>
+          </div>
         </div>
       </div>
     </div>
