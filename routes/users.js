@@ -9,9 +9,14 @@ const mongoose = require('mongoose');
 require('../models/User');
 const User = mongoose.model('users');
 
-
 router.get('/login', (req, res) => {
-  res.render('users/login');
+  let userFound;
+  User.find({})
+  .then(userFound => {
+      res.render('users/login', {
+        userFound: userFound
+    });
+  });
 });
 
 //Login form POST

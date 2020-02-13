@@ -12,7 +12,7 @@ const passport = require('passport');
 const app = express();
 
 //handlebars helpers
-const { formatDate } = require('./helpers/hbs');
+const { formatDate, confirmUser } = require('./helpers/hbs');
 
 //Load order route
 const order = require('./routes/order');
@@ -34,7 +34,8 @@ mongoose.connect(db.mongoURI, {
 //express-handlebars middleware
 app.engine('handlebars', exphbs({
   helpers: { 
-    formatDate: formatDate
+    formatDate: formatDate,
+    confirmUser: confirmUser
   },
   defaultLayout: 'main'
 }));

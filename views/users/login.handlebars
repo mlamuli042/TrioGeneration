@@ -54,19 +54,26 @@
           </div>
 
           <div class="form-row">
-            <button type="submit" class="btn bg-custom btn-block text-white btn-lg">Login
+            <div class="col"></div>
+            <div class="col">
+              <button type="submit" class="btn btn-block bg-custom ">Login
               <i class="fa fa-sign-in"></i>
             </button>
+            </div>
           </div>
         </form>
       </div>
     </div>
+    {{#if userFound}}
 
+    {{else}}
     <div class="card mt-2">
       <div class="card-body text-center">
         <p class="lead">No account? <a href="/users/register" style="text-decoration: none;">Create one</a>
         </p>
       </div>
     </div>
+    {{/if}}
+
   </div>
 </div>

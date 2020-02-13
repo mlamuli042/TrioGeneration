@@ -24,7 +24,7 @@ module.exports = {
   allowUserReg: function (req, res, next) {
     User.countDocuments({}, (err, count) => {
       if (count > 0) {
-        req.flash('error_msg', 'User registration is disallowed. We already have an administrator');
+        req.flash('error_msg', 'Registration is disallowed. We already have an administrator');
         res.redirect('/users/login');
         return;
       }
@@ -32,6 +32,3 @@ module.exports = {
     });
   }
 }
-
-// req.flash('error_msg', 'User registration is disallowed. Please contact administrator');
-// res.redirect('/users/login')

@@ -36,11 +36,15 @@
               <td>{{size}}</td>
               <td>{{phone}}</td>
               <td class="d-none d-lg-block">{{email}}</td>
-              <td>{{formatDate date 'MMMM Do, YYYY'}}</td>
+              <td>{{formatDate date 'MMMM Do YYYY'}}</td>
               <td>
-                <form class="delete-form" action="/orders/{{id}}?_method=DELETE" method="post">
+                <form action="/orders/{{id}}?_method=DELETE" method="post">
                   <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger"><i class="fa fa-remove"></i> Delete</button>
+                  <button type="submit" class="btn btn-danger btn-block" 
+                  data-toggle="tooltip" data-placement="top" title="Delete order">
+                  <i class="fa fa-remove"></i> <span class="d-none d-lg-inline-block">
+                    Delete</span>
+                  </button>
                 </form>
               </td>
             </tr>
